@@ -138,4 +138,14 @@ def swap_by_indices(arr, target_value, target_index):
     arr = arr.copy()
     curr_index = np.where(arr == target_value)[0][0]
     arr[curr_index], arr[target_index] = arr[target_index], arr[curr_index]
-    return arr    
+    return arr
+
+def generate_kv_mapping(num_keys, num_values):
+    base_array = np.random.permutation(num_values)
+    residual = num_keys - num_values
+    # Draw 2 additional numbers from range 1 to num_food
+    additional_values = np.random.choice(
+        range(num_values), size=residual, replace=False
+    )
+
+    return np.concatenate([base_array, additional_values])  
