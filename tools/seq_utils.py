@@ -1,4 +1,5 @@
 import numpy as np
+import itertools
 
 def generate_sequence(num_stims, num_iter_per_stim):
     """
@@ -149,3 +150,23 @@ def generate_kv_mapping(num_keys, num_values):
     )
 
     return np.concatenate([base_array, additional_values])  
+
+def generate_seq_pair(num_stims, num_iter_per_stim, num_directions=4):
+    # stim_seq = np.repeat(np.arange(num_stims), num_iter_per_stim)
+    # key_dir = np.tile(np.arange(num_directions), len(stim_seq) // 4)
+    # for i in [0, 1]:
+    #     # best effort to avoid consecutive in stim seq first and then key_dir
+    #     paired_data = shuffle_with_consecutive_check(stim_seq, key_dir, i)
+    #     stim_seq, key_dir = zip(*paired_data)
+    stim_seq = list(
+        itertools.chain.from_iterable(
+            np.random.permutation(num_stims) for _ in range(num_iter_per_stim)
+        )
+    )
+    key_dir = list(
+        itertools.chain.from_iterable(
+            np.random.permutation(num_directions) for _ in range(len(stim_seq) // num_directions)
+        )
+    )
+
+    return np.array(stim_seq), np.array(key_dir)
