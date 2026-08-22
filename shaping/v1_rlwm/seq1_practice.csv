@@ -1,4 +1,4 @@
-stim,correct_key,set_size,block,img_folder,trial_type
+stim,correct_key,set_size,block,img_folder,condition
 1.0,0.0,2.0,1.0,1.0,1.0
 2.0,2.0,2.0,1.0,1.0,1.0
 2.0,2.0,2.0,1.0,1.0,1.0
