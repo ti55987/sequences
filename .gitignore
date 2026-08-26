@@ -1,2 +1,3 @@
 .DS*
 tools/__pycache__/*
+images/*
